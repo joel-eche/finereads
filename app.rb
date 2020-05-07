@@ -9,30 +9,30 @@ get "/" do
   erb :index
 end
 
-get "/search"
+get "/search" do
   "search"
 end
 
-get "/search/:query?"
+get "/search/:query?" do
 
 end
 
-get "/books"
+get "/books" do
 
 end
 
-post "/books"
+post "/books" do
 
 end
 
-get "/books/:id"
+get "/books/:id" do
 
 end
 
-put "/books/:id/edit"
+put "/books/:id/edit" do
 
 end
 
-delete "/books/:id/delete"
+delete "/books/:id/delete" do
 
 end
