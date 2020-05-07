@@ -18,6 +18,10 @@ get "/books"
 
 end
 
+post "/books"
+
+end
+
 get "/books/:id"
 
 end
