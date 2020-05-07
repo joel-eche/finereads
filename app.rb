@@ -1,6 +1,9 @@
 require "sinatra"
 require "sinatra/reloader" if development?
 require_relative "models/Libro"
+require_relative "modules/HTTPManagement"
+
+helpers HTTPManagement
 
 get "/" do
   erb :index
