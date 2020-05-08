@@ -8,7 +8,7 @@ require_relative "constants/constants"
 helpers HTTPManagement
 
 get "/" do
-  erb :index
+  erb :index, :layout => false
 end
 
 get "/search" do
