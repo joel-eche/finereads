@@ -27,6 +27,7 @@ end
 
 get "/books/:id" do
 
+  erb :_book_detail_page, locals: h
 end
 
 put "/books/:id/edit" do

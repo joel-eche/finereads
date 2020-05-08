@@ -1,0 +1,8 @@
+<!-- Probably we need pre-processing for non-String values -->
+<img src= <%= imageLinks.fetch('thumbnail','../public/images/not_found_book.png') %> alt="Book's thumbnail">
+<h1><%=volumeInfo.fetch('title')%><%=volumeInfo.fetch('subtitle','')%></h1>
+<p>by <%=volumeInfo.fetch('authors').join(",")%></p>
+<%=description%>
+<%if saleInfo.fetch('saleability')=='FOR_SALE'%>
+  <a href=<%=buyLink%>>Buy for <%=saleInfo.fetch('listPrice').values.join(' ')%></a>
+<%end%>
