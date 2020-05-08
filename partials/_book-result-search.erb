@@ -2,16 +2,28 @@
   <a href="/books/<%= book["id"] %>">
     <% unless book["volumeInfo"]["imageLinks"].nil? %>
       <img src="<%= book["volumeInfo"]["imageLinks"]["thumbnail"] %>" alt="<%= book["volumeInfo"]["title"] %>">
+      <% cover = book["volumeInfo"]["imageLinks"]["thumbnail"] %>
     <% else %>
       <img src="images/default-book.jpg" alt="<%= book["volumeInfo"]["title"] %>">
+      <% cover = "images/default-book.jpg" %>
     <% end %>
   </a>
-  <form action="/books/<%= book["id"] %>/edit" method="put">
-    <input type="hidden" name="state" value="<%= STATUS_WANT_TO_READ %>">
+
+  <form action="/books" method="post">
+    <input 
+    type="hidden" 
+    name="book-data" 
+    value='{"id": "<%= book["id"] %>", "cover": "<%= cover %>", "title": "<%= book["volumeInfo"]["title"] %>", "author":"<%= book["volumeInfo"].fetch("authors", ["Unknown"]).join(', ') %>", "status":"<%= STATUS_WANT_TO_READ %>"}'
+    >
     <button type="submit">Want to read</button>
   </form>
-  <form action="/books/<%= book["id"] %>/edit" method="put">
-    <input type="hidden" name="state" value="<%= STATUS_READ %>">
+
+  <form action="/books" method="post">
+    <input 
+    type="hidden" 
+    name="book-data" 
+    value='{"id": "<%= book["id"] %>", "cover": "<%= cover %>", "title": "<%= book["volumeInfo"]["title"] %>", "author":"<%= book["volumeInfo"].fetch("authors", ["Unknown"]).join(', ') %>", "status":"<%= STATUS_READ %>"}'
+    >
     <button type="submit">Mark as read</button>
   </form>
 </div>
