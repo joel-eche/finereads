@@ -1,0 +1,24 @@
+<% unless book["volumeInfo"]["imageLinks"].nil? %> <img src="<%= book["volumeInfo"]["imageLinks"]["thumbnail"] %>"
+alt="Book's thumbnail"> <% else %>
+<img src="images/not_found_book.png" alt="" />
+<% end %>
+
+<h1>
+  <%= book["volumeInfo"].fetch('title') %> <% subtitle = book["volumeInfo"]['subtitle'] %> <%=': '.concat(subtitle)
+  unless subtitle.nil? %>
+</h1>.
+
+<% unless book["volumeInfo"]['authors'].nil? %>
+<p>by <%= book["volumeInfo"].fetch('authors').join(",") %></p>
+<% end %>
+
+<form action="/books/:id/edit" method="POST">
+  <select name="state" id="state"><%book["volumeInfo"].fetch("status")%></select>
+  <textarea name="" id="" cols="30" rows="10"><%book["volumeInfo"]["note"]%></textarea>
+  <input type="submit" value="Save"/>
+</form>
+<!-- <%= book["volumeInfo"]["description"] %>
+
+<%if book["saleInfo"].fetch('saleability')=='FOR_SALE'%>
+  <a href="<%= book["saleInfo"]["buyLink"] %>" target="_blank">Save</a>
+<%end%> -->

@@ -1,3 +1,4 @@
+<<<<<<< HEAD:models/Book.rb
 require "lazyrecord"
 require_relative "../constants/constants"
 

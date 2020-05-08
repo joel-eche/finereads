@@ -38,8 +38,9 @@ get "/books/:id" do
   erb :book, locals:{book: book}
 end
 
-put "/books/:id/edit" do
-
+post "/books/:id/edit" do
+  Book.all.find
+  erb :book_note, locals:{book: book}
 end
 
 delete "/books/:id/delete" do
