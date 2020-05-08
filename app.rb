@@ -1,39 +1,36 @@
 require "sinatra"
 require "sinatra/reloader" if development?
 require_relative "models/Libro"
-require_relative "modules/HTTPManagement"
-
-helpers HTTPManagement
 
 get "/" do
   erb :index
 end
 
-get "/search" do
+get "/search"
   "search"
 end
 
-get "/search/:query?" do
+get "/search/:query?"
 
 end
 
-get "/books" do
+get "/books"
 
 end
 
-post "/books" do
+post "/books"
 
 end
 
 get "/books/:id" do
-
+  
   erb :_book_detail_page, locals: h
 end
 
-put "/books/:id/edit" do
+put "/books/:id/edit"
 
 end
 
-delete "/books/:id/delete" do
+delete "/books/:id/delete"
 
 end
