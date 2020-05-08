@@ -1,5 +1,5 @@
 <div class="card-book">
-  <a href="/books/<%= book["id"] %>?url=<%= book["selfLink"]%>">
+  <a href="/books/<%= book["id"] %>">
     <% unless book["volumeInfo"]["imageLinks"].nil? %>
       <img src="<%= book["volumeInfo"]["imageLinks"]["thumbnail"] %>" alt="<%= book["volumeInfo"]["title"] %>">
     <% else %>
