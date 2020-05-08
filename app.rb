@@ -42,6 +42,7 @@ put "/books/:id/edit" do
 
 end
 
-delete "/books/:id/delete" do
-
+post "/books/:id/delete" do
+  Book.delete(params["id"])
+  redirect url("/books")
 end
