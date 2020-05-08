@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra/reloader" if development?
-require_relative "models/Libro"
+require "json"
+require_relative "models/Book"
 require_relative "modules/HTTPManagement"
 require_relative "constants/constants"
 
@@ -26,7 +27,10 @@ get "/books" do
 end
 
 post "/books" do
-
+  data = JSON.parse(params["book-data"])
+  book = Book.new(data["id"], data["cover"], data["title"], data["author"], data["status"], Time.now)
+  book.save
+  redirect url("/books")
 end
 
 get "/books/:id" do

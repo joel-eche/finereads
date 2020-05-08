@@ -1,14 +1,18 @@
-#require_relative "../constants/constants"
+require "lazyrecord"
+require_relative "../constants/constants"
 
-class Libro
+
+class Book < LazyRecord
   attr_accessor :id, :cover, :title, :author, :status, :date
 
-  def initialize(id, cover, title, author, status, date)
+  def initialize(id, cover, title, author, status, date, note="")
     @id = id
     @cover = cover
     @title = title
     @author = author
     @status = status
     @date = date
+    @note = note
   end
+  
 end
