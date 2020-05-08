@@ -14,7 +14,7 @@ get "/search" do
   @books = []
 
   unless params.empty?
-    data = get("volumes?q=#{params["query"]}&maxResults=8")
+    data = get_api("volumes?q=#{params["query"].gsub(" ", "+")}&maxResults=8")
     @books = data["items"]
   end
   
@@ -29,13 +29,9 @@ post "/books" do
 
 end
 
-before "/books/:id" do
-  puts params
-  lolo = "lololo"
-end
-
 get "/books/:id" do
-  puts lolo
+  book = get(params["url"])
+  erb :book, locals:{book: book}
 end
 
 put "/books/:id/edit" do
