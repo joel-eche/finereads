@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require_relative "models/Libro"
 require_relative "modules/HTTPManagement"
+require_relative "constants/constants"
 
 helpers HTTPManagement
 
@@ -10,11 +11,14 @@ get "/" do
 end
 
 get "/search" do
-  "search"
-end
+  @books = []
 
-get "/search/:query?" do
-
+  unless params.empty?
+    data = get("volumes?q=#{params["query"]}&maxResults=8")
+    @books = data["items"]
+  end
+  
+  erb :search
 end
 
 get "/books" do
@@ -25,8 +29,13 @@ post "/books" do
 
 end
 
-get "/books/:id" do
+before "/books/:id" do
+  puts params
+  lolo = "lololo"
+end
 
+get "/books/:id" do
+  puts lolo
 end
 
 put "/books/:id/edit" do
