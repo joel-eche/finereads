@@ -30,7 +30,7 @@ post "/books" do
 end
 
 get "/books/:id" do
-  book = get(params["url"])
+  book = get_api("volumes/#{params["id"]}")
   erb :book, locals:{book: book}
 end
 
