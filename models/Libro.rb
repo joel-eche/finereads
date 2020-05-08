@@ -1,3 +1,5 @@
+#require_relative "../constants/constants"
+
 class Libro
   attr_accessor :id, :cover, :title, :author, :status, :date
 
