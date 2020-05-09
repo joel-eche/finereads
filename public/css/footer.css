@@ -1,0 +1,9 @@
+.footer {
+  color: var(--txt-gray);
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+}
+.footer__link {
+  color: var(--txt-gray);
+  font-size: 23px;
+}
