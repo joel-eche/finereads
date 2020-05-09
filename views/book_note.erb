@@ -1,24 +1,19 @@
-<% unless book["volumeInfo"]["imageLinks"].nil? %> <img src="<%= book["volumeInfo"]["imageLinks"]["thumbnail"] %>"
-alt="Book's thumbnail"> <% else %>
-<img src="images/not_found_book.png" alt="" />
-<% end %>
+<img src="<%= book.cover%>" alt="" />
 
 <h1>
-  <%= book["volumeInfo"].fetch('title') %> <% subtitle = book["volumeInfo"]['subtitle'] %> <%=': '.concat(subtitle)
-  unless subtitle.nil? %>
-</h1>.
+  <%= book.title %>
+</h1>
 
-<% unless book["volumeInfo"]['authors'].nil? %>
-<p>by <%= book["volumeInfo"].fetch('authors').join(",") %></p>
+<% unless book.author == ""%>
+<p>by <%= book.author%></p>
 <% end %>
 
-<form action="/books/:id/edit" method="POST">
-  <select name="state" id="state"><%book["volumeInfo"].fetch("status")%></select>
-  <textarea name="" id="" cols="30" rows="10"><%book["volumeInfo"]["note"]%></textarea>
+<form action="/books/<%= book.id%>/edit" method="POST">
+  <select name="status" id="status">
+    <option value="<%= STATUS_WANT_TO_READ%>" <% if book.status == STATUS_WANT_TO_READ%>selected<% end %>><%= STATUS_WANT_TO_READ%></option>
+    <option value="<%= STATUS_READ%>" <% if book.status == STATUS_READ%>selected<% end %>><%= STATUS_READ%></option>
+    <option value="<%= STATUS_READING%>" <% if book.status == STATUS_READING%>selected<% end %>><%= STATUS_READING%></option>
+  </select>
+  <textarea name="note" id="note" cols="30" rows="10"><%= book.note%></textarea>
   <input type="submit" value="Save"/>
 </form>
-<!-- <%= book["volumeInfo"]["description"] %>
-
-<%if book["saleInfo"].fetch('saleability')=='FOR_SALE'%>
-  <a href="<%= book["saleInfo"]["buyLink"] %>" target="_blank">Save</a>
-<%end%> -->

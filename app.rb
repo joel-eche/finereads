@@ -39,7 +39,16 @@ get "/books/:id" do
 end
 
 post "/books/:id/edit" do
-  Book.all.find
+  book = Book.find(params["id"])
+  p params
+  book.status = params["status"]
+  book.note = params["note"]
+  book.save
+  redirect url("/books")
+end
+
+get "/books/:id/edit" do
+  book = Book.find(params["id"])
   erb :book_note, locals:{book: book}
 end
 
