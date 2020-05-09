@@ -1,14 +1,14 @@
-<section class="search__title">
+<section class="search__title flex justify-content-center text-center">
   <h1>Find your next book to read</h1>
 </section>
-<section class="search__form">
+<section class="flex justify-content-center">
   <%= erb "../partials/_form-search".to_sym %>
 </section>
-<section class="search__results">
+<section class="search__results container-big flex flex-wrap justify-content-between">
   <% if message == "" %>
     <%= erb "../partials/_result-search".to_sym, locals: {books: books} %>
   <% else %>
-    <div>
+    <div class="flex flex-column align-items-center text-center">
       <i class="far fa-frown-open"></i>
       <span>No results found</span>
     </div>
