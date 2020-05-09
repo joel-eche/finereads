@@ -1,0 +1,12 @@
+.navbar {
+  height: 80px;
+}
+.brand, .brand__bold {
+  font-family: 'Roboto Slab', serif;
+  font-size: 30px;
+}
+.navigation__item {
+  margin: 0px 10px;
+  font-size: 18px;
+  color: var(--txt-black);
+}
