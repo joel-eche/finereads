@@ -37,8 +37,10 @@ end
 
 post '/books' do
   data = JSON.parse(params['book-data'])
-  book = Book.new(data['id'], data['cover'], data['title'], data['author'], data['status'], Time.now)
-  book.save
+  if Book.find(data['id']).nil?
+    book = Book.new(data['id'], data['cover'], data['title'], data['author'], data['status'], Time.now)
+    book.save
+  end
   redirect url('/books')
 end
 
