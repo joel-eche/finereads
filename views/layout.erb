@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/search.css">
     <title>Document</title>
   </head>
-  <body>
+  <body class="flex flex-column">
     <%= erb "../partials/_header".to_sym %>
-    <main class="main">
+    <main class="main flex-grow-1">
       <%= yield %>
     </main>
     <%= erb "../partials/_footer".to_sym %>

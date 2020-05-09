@@ -1,31 +1,31 @@
 <div class="card-book">
-  <a href="/books/<%= book["id"] %>">
+  <a href="/books/<%= book["id"] %>" class="mb-12">
     <% unless book["volumeInfo"]["imageLinks"].nil? %>
-      <img src="<%= book["volumeInfo"]["imageLinks"]["thumbnail"] %>" alt="<%= book["volumeInfo"]["title"] %>">
+      <img src="<%= book["volumeInfo"]["imageLinks"]["thumbnail"] %>" alt="<%= book["volumeInfo"]["title"] %>" class="card-book__image">
       <% cover = book["volumeInfo"]["imageLinks"]["thumbnail"] %>
     <% else %>
-      <img src="images/default-book.jpg" alt="<%= book["volumeInfo"]["title"] %>">
+      <img src="images/default-book.jpg" alt="<%= book["volumeInfo"]["title"] %>" class="card-book__image">
       <% cover = "images/default-book.jpg" %>
     <% end %>
   </a>
   <% title = "#{book["volumeInfo"]["title"]}#{book["volumeInfo"]["subtitle"].nil? ? "" : ": ".concat(book["volumeInfo"]["subtitle"]) }" %>
   <% unless exists_book_in_my_list?(book["id"]) %>
-    <form action="/books" method="post">
+    <form action="/books" method="post" class="text-center">
       <input 
         type="hidden" 
         name="book-data" 
         value='{"id": "<%= book["id"] %>", "cover": "<%= cover %>", "title": "<%= title %>", "author":"<%= book["volumeInfo"].fetch("authors", ["Unknown"]).join(', ') %>", "status":"<%= STATUS_WANT_TO_READ %>"}'
       >
-      <button type="submit">Want to read</button>
+      <button type="submit" class="btn btn-green w-80-percent">Want to read</button>
     </form>
 
-    <form action="/books" method="post">
+    <form action="/books" method="post" class="text-center">
       <input 
         type="hidden" 
         name="book-data" 
         value='{"id": "<%= book["id"] %>", "cover": "<%= cover %>", "title": "<%= title %>", "author":"<%= book["volumeInfo"].fetch("authors", ["Unknown"]).join(', ') %>", "status":"<%= STATUS_READ %>"}'
       >
-      <button type="submit">Mark as read</button>
+      <button type="submit" class="btn btn-transparent-blue w-80-percent">Mark as read</button>
     </form>
   <% else %>
     <div>
