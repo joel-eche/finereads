@@ -10,6 +10,7 @@
 }
 .div_img img {
   width: 100%;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
 }
 .div_main {
   width: 60%;
@@ -42,4 +43,27 @@
   color: #1a202c;
   height: 40px;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 769px) {
+  .div_img {
+    width: unset;
+    float: unset;
+  }
+  .div_main {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    margin-left: auto;
+    float: unset;
+    margin-top: unset;
+  }
+  .div_info {
+    margin: auto;
+    text-align: center;
+    font-family: Roboto Slab;
+    display: flex;
+    flex-direction: column;
+    font-size: 3.7vw;
+  }
 }
