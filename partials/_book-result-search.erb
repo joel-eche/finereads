@@ -8,22 +8,28 @@
       <% cover = "images/default-book.jpg" %>
     <% end %>
   </a>
+  <% unless exists_book_in_my_list?(book["id"]) %>
+    <form action="/books" method="post">
+      <input 
+        type="hidden" 
+        name="book-data" 
+        value='{"id": "<%= book["id"] %>", "cover": "<%= cover %>", "title": "<%= book["volumeInfo"]["title"] %>", "author":"<%= book["volumeInfo"].fetch("authors", ["Unknown"]).join(', ') %>", "status":"<%= STATUS_WANT_TO_READ %>"}'
+      >
+      <button type="submit">Want to read</button>
+    </form>
 
-  <form action="/books" method="post">
-    <input 
-    type="hidden" 
-    name="book-data" 
-    value='{"id": "<%= book["id"] %>", "cover": "<%= cover %>", "title": "<%= book["volumeInfo"]["title"] %>", "author":"<%= book["volumeInfo"].fetch("authors", ["Unknown"]).join(', ') %>", "status":"<%= STATUS_WANT_TO_READ %>"}'
-    >
-    <button type="submit">Want to read</button>
-  </form>
-
-  <form action="/books" method="post">
-    <input 
-    type="hidden" 
-    name="book-data" 
-    value='{"id": "<%= book["id"] %>", "cover": "<%= cover %>", "title": "<%= book["volumeInfo"]["title"] %>", "author":"<%= book["volumeInfo"].fetch("authors", ["Unknown"]).join(', ') %>", "status":"<%= STATUS_READ %>"}'
-    >
-    <button type="submit">Mark as read</button>
-  </form>
+    <form action="/books" method="post">
+      <input 
+        type="hidden" 
+        name="book-data" 
+        value='{"id": "<%= book["id"] %>", "cover": "<%= cover %>", "title": "<%= book["volumeInfo"]["title"] %>", "author":"<%= book["volumeInfo"].fetch("authors", ["Unknown"]).join(', ') %>", "status":"<%= STATUS_READ %>"}'
+      >
+      <button type="submit">Mark as read</button>
+    </form>
+  <% else %>
+    <div>
+      <i class="far fa-check-circle"></i>
+      <span>Added</span>
+    </div>
+  <% end %>
 </div>

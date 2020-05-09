@@ -5,23 +5,30 @@ require 'sinatra/reloader' if development?
 require 'json'
 require_relative 'models/Book'
 require_relative 'modules/HTTPManagement'
+require_relative 'modules/BookManagement'
 require_relative 'constants/constants'
 
-helpers HTTPManagement
+helpers HTTPManagement, BookManagement
 
 get '/' do
   erb :index, layout: false
 end
 
 get '/search' do
-  @books = []
+  books = []
+  message = ""
 
   unless params.empty?
     data = get_api("volumes?q=#{params['query'].gsub(' ', '+')}&maxResults=8")
-    @books = data['items']
+
+    if data['items'].nil?
+      message ="No results found"
+    else
+      books = data['items']
+    end
   end
 
-  erb :search
+  erb :search, locals: {books: books, message: message}
 end
 
 get '/books' do
