@@ -40,22 +40,21 @@ get '/books/:id' do
   erb :book, locals: { book: book }
 end
 
-<<<<<<< HEAD
-post "/books/:id/edit" do
-  book = Book.find(params["id"])
+post '/books/:id/edit' do
+  book = Book.find(params['id'])
   p params
-  book.status = params["status"]
-  book.note = params["note"]
+  book.status = params['status']
+  book.note = params['note']
   book.save
-  redirect url("/books")
+  redirect url('/books')
 end
 
-get "/books/:id/edit" do
-  book = Book.find(params["id"])
-  erb :book_note, locals:{book: book}
+get '/books/:id/edit' do
+  book = Book.find(params['id'])
+  erb :book_note, locals: { book: book }
 end
 
-post "/books/:id/delete" do
-  Book.delete(params["id"])
-  redirect url("/books")
+post '/books/:id/delete' do
+  Book.delete(params['id'])
+  redirect url('/books')
 end
