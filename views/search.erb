@@ -5,5 +5,12 @@
   <%= erb "../partials/_form-search".to_sym %>
 </section>
 <section class="search__results">
-  <%= erb "../partials/_result-search".to_sym %>
+  <% if message == "" %>
+    <%= erb "../partials/_result-search".to_sym, locals: {books: books} %>
+  <% else %>
+    <div>
+      <i class="far fa-frown-open"></i>
+      <span>No results found</span>
+    </div>
+  <% end %>
 </section>
