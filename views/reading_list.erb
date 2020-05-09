@@ -1,0 +1,31 @@
+<h1>My books</h1>
+
+<table>
+  <tr>
+    <th>Cover</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Status</th>
+    <th>Date added</th>
+    <th></th>
+  </tr>
+  <%Book.all.each do |book|%>
+  <tr>
+    <td><img src="<%=book.cover%>" alt="<%=book.title%> cover" /></td>
+    <td><%=book.title%></td>
+    <td><%=book.author%></td>
+    <td><%=book.status%></td>
+    <td><%=p book.date.to_date.strftime("%B %d, %Y")%></td>
+    <td>
+      <a href="/books/<%=book.id%>/edit"
+        ><img src="images/green_pencil.svg" alt="Edit book"
+      /></a>
+      <form action="/books/<%=book.id%>/delete" method="POST">
+        <button type="submit">
+          <img src="images/red_trashcan.svg" alt="Delete book" />
+        </button>
+      </form>
+    </td>
+  </tr>
+  <%end%>
+</table>
