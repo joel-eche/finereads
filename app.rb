@@ -38,8 +38,18 @@ get "/books/:id" do
   erb :book, locals:{book: book}
 end
 
-put "/books/:id/edit" do
+post "/books/:id/edit" do
+  book = Book.find(params["id"])
+  p params
+  book.status = params["status"]
+  book.note = params["note"]
+  book.save
+  redirect url("/books")
+end
 
+get "/books/:id/edit" do
+  book = Book.find(params["id"])
+  erb :book_note, locals:{book: book}
 end
 
 delete "/books/:id/delete" do

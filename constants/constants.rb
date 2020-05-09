@@ -6,3 +6,4 @@ MAX_PAGINATION = 40
 # status book
 STATUS_WANT_TO_READ = "Want to read"
 STATUS_READ = "Read"
+STATUS_READING = "Reading"
