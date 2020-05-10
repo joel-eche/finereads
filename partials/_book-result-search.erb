@@ -1,4 +1,4 @@
-<div class="card-book">
+<div class="<% if request.path == '/search'%>card-book<%end%>">
   <a href="/books/<%= book["id"] %>" class="mb-12">
     <% unless book["volumeInfo"]["imageLinks"].nil? %>
       <img src="<%= book["volumeInfo"]["imageLinks"]["thumbnail"] %>" alt="<%= book["volumeInfo"]["title"] %>" class="card-book__image">
@@ -9,6 +9,7 @@
     <% end %>
   </a>
   <% title = "#{book["volumeInfo"]["title"]}#{book["volumeInfo"]["subtitle"].nil? ? "" : ": ".concat(book["volumeInfo"]["subtitle"]) }" %>
+  <% title.gsub!("'", " ") %>
   <% unless exists_book_in_my_list?(book["id"]) %>
     <form action="/books" method="post" class="text-center">
       <input 
