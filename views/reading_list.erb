@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container-big">
   <h1>My books</h1>
   <div class="books_container w-100-percent">
@@ -42,3 +43,29 @@
     </table>
   </div>
 </div>
+=======
+<h1>My books</h1>
+
+<table>
+  <tr>
+    <th>Cover</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Status</th>
+    <th>Date added</th>
+    <th></th>
+  </tr>
+  <%Book.all.each do |book|%>
+  <tr>
+    <td><img src="<%=book.cover%>" alt="<%=book.title%> cover" /></td>
+    <td><%=book.title%></td>
+    <td><%=book.author%></td>
+    <td><%=book.status%></td>
+    <td><%=p book.date.to_date.strftime("%B %d, %Y")%></td>
+    <td>
+      <%= erb "../partials/_edit_delete_icons".to_sym, locals: {book: book} %>
+    </td>
+  </tr>
+  <%end%>
+</table>
+>>>>>>> edit, delete icons added
