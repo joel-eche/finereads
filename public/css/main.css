@@ -65,9 +65,15 @@ body {
 .text-center {
   text-align: center;
 }
+.text-left {
+  text-align: left;
+}
 .text-undecorated {
   text-decoration: none;
   color: var(--txt-black);
+}
+.text-orange {
+  color: var(--txt-orange);
 }
 
 .list-style-none {
@@ -109,6 +115,13 @@ body {
 .pb-0 {
   padding-bottom: 0px;
 }
+.w-100-percent {
+  width: 100%;
+}
 .w-80-percent {
   width: 80%;
+}
+
+.vertical-align-top {
+  vertical-align: top;
 }

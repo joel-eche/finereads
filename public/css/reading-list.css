@@ -1,0 +1,24 @@
+.books__table {
+  margin-top: 25px;
+}
+.books__table__th--title {
+  width: 25%;
+}
+.books__table__th--options {
+  width: 50px;
+}
+.books__table__data {
+  padding-top: 12px;
+  padding-right: 30px;
+  height: 137px;
+}
+.books__table__data--cover {
+  width: 70px;
+  height: 105px;
+}
+
+@media only screen and (max-width: 769px) {
+  .books_container {
+    overflow-x: auto;
+  }
+}
