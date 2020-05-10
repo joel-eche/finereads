@@ -19,7 +19,8 @@ get '/search' do
   message = ''
 
   unless params.empty?
-    data = get_api("volumes?q=#{params['query'].gsub(' ', '+')}&maxResults=8")
+    query = "#{params['search-filter']}#{params['query'].gsub(' ', '+')}"
+    data = get_api("volumes?q=#{query}&maxResults=8")
 
     if data['items'].nil?
       message = 'No results found'
