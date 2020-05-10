@@ -60,7 +60,7 @@ end
 
 get '/books/:id/edit' do
   book = Book.find(params['id'])
-  erb :book_note, locals: { book: book }
+  erb :book_edit, locals: { book: book }
 end
 
 post '/books/:id/delete' do

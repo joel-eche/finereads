@@ -1,0 +1,37 @@
+.book-edit {
+  display: flex;
+}
+.book-edit__cover__container--img {
+  max-width: 155px;
+}
+.book-edit__detail {
+  padding-left: 22px;
+  width: 50%;
+}
+.book-edit__detail--title {
+  font-size: 15px;
+} 
+.book-edit__status-select {
+  max-width: 120px;
+  height: 40px;
+  padding-left: 10px;
+  border: none;
+  background-color: var(--select-lightblue-light);
+}
+.book-edit__note {
+  resize: vertical;
+}
+
+@media only screen and (max-width: 769px) {
+  .book-edit {
+    flex-direction: column;
+  }
+  .book-edit__cover__container {
+    display: flex;
+    justify-content: center;
+  }
+  .book-edit__detail {
+    padding-left: 0px;
+    width: 100%;
+  }
+}
