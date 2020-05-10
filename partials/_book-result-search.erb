@@ -29,11 +29,13 @@
       <button type="submit" class="btn btn-transparent-blue w-80-percent">Mark as read</button>
     </form>
   <% else %>
-    <div>
+    <div class = "flex align-items-center" >
       <i class="far fa-check-circle"></i>
       <span>Added</span>
       <% unless request.path == '/search'%>
-        <%= erb "../partials/_edit_delete_icons".to_sym, locals: {book: Book.find(book["id"])} %>
+        <div class = "flex">
+          <%= erb "../partials/_edit_delete_icons".to_sym, locals: {book: Book.find(book["id"])} %>
+        </div>
       <%end%>
     </div>
   <% end %>
