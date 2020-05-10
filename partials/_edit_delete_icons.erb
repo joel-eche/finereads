@@ -1,16 +1,8 @@
-<a href="/books/<%=book.id%>/edit">
-  <img src="../images/green_pencil.svg" alt="Edit book"/>
+<a href="/books/<%=book.id%>/edit" class="btn btn-transparent-green flex align-items-center">
+	<i class="fas fa-edit"></i>
 </a>
 <form action="/books/<%=book.id%>/delete" method="POST">
-	<button type="submit">
-		<img src="../images/red_trashcan.svg" alt="Delete book" />
+	<button type="submit" class="btn btn-transparent-red">
+		<i class="fas fa-trash-alt"></i>
 	</button>
 </form>
-<a href="/books/<%=book.id%>/edit" class="btn btn-transparent-green flex align-items-center">
-            <i class="fas fa-edit"></i>
-          </a>
-          <form action="/books/<%=book.id%>/delete" method="POST">
-            <button type="submit" class="btn btn-transparent-red">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </form>

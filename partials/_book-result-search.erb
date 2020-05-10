@@ -31,7 +31,9 @@
     <div>
       <i class="far fa-check-circle"></i>
       <span>Added</span>
-      <%= erb "../partials/_edit_delete_icons".to_sym, locals: {book: Book.find(book["id"])} %>
+      <% unless request.path == '/search'%>
+        <%= erb "../partials/_edit_delete_icons".to_sym, locals: {book: Book.find(book["id"])} %>
+      <%end%>
     </div>
   <% end %>
 </div>
