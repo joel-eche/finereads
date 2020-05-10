@@ -28,6 +28,14 @@
   margin-top: 40px;
 }
 
+.search__filter {
+  border: none;
+  border-radius: 0px;
+  height: 100%;
+  background-color: var(--select-lightblue-light);
+  padding-left: 10px;
+}
+
 .card-book {
   padding: 16px 25px 10px 25px;
   margin-bottom: 40px;
