@@ -1,8 +1,4 @@
-<% unless book["volumeInfo"]["imageLinks"].nil? %>
-	<img src="<%= book["volumeInfo"]["imageLinks"]["thumbnail"] %>" alt="Book's thumbnail">
-<% else %>
-  <img src="images/not_found_book.png" alt="">
-<% end %>
+<%= erb "../partials/_book-result-search".to_sym, locals: {book: book} %>
 
 <h1>
 	<%= book["volumeInfo"].fetch('title') %>
