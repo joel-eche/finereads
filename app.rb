@@ -16,19 +16,19 @@ end
 
 get '/search' do
   books = []
-  message = ""
+  message = ''
 
   unless params.empty?
     data = get_api("volumes?q=#{params['query'].gsub(' ', '+')}&maxResults=8")
 
     if data['items'].nil?
-      message ="No results found"
+      message = 'No results found'
     else
       books = data['items']
     end
   end
 
-  erb :search, locals: {books: books, message: message}
+  erb :search, locals: { books: books, message: message }
 end
 
 get '/books' do

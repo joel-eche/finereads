@@ -5,10 +5,15 @@
   <%= erb "../partials/_form-search".to_sym %>
 </section>
 <section class="search__results container-big flex flex-wrap justify-content-between">
-  <% if message == "" %>
+  <% if message == "" && !books.empty? %>
     <%= erb "../partials/_result-search".to_sym, locals: {books: books} %>
+  <% elsif message == "" && books.empty? %>
+    <div class="flex flex-column align-items-center text-center w-100-percent">
+      <i class="fas fa-book-open"></i>
+      <span>Waiting for a query</span>
+    </div>
   <% else %>
-    <div class="flex flex-column align-items-center text-center">
+    <div class="flex flex-column align-items-center text-center w-100-percent">
       <i class="far fa-frown-open"></i>
       <span>No results found</span>
     </div>
