@@ -1,0 +1,36 @@
+<div class="container book-edit">
+  <div class="book-edit__cover__container mb-12">
+    <img src="<%= book.cover%>" alt="" class="book-edit__cover__container--img"/>
+  </div>
+  <div class="book-edit__detail flex flex-column">
+    <h1 class="book-edit__detail--title">
+      <%= book.title %>
+    </h1>
+    
+    <% unless book.author == ""%>
+    <p>by <%= book.author%></p>
+    <% end %>
+    
+    <form action="/books/<%= book.id%>/edit" method="POST">
+      <div class="flex flex-column mb-12 mt-12">
+        <label for="status" class="text-gray">
+          READING STATUS
+        </label>
+        <select name="status" id="status" class="book-edit__status-select">
+          <option value="<%= STATUS_WANT_TO_READ%>" <% if book.status == STATUS_WANT_TO_READ%>selected<% end %>><%= STATUS_WANT_TO_READ%></option>
+          <option value="<%= STATUS_READ%>" <% if book.status == STATUS_READ%>selected<% end %>><%= STATUS_READ%></option>
+          <option value="<%= STATUS_READING%>" <% if book.status == STATUS_READING%>selected<% end %>><%= STATUS_READING%></option>
+        </select>
+      </div>
+      <div  class="flex flex-column mb-12">
+        <label for="note" class="text-gray">
+          NOTES
+        </label>
+        <textarea name="note" id="note" cols="30" rows="10" class="book-edit__note"><%= book.note%></textarea>
+      </div>
+      <div class="text-right mb-12">
+        <input type="submit" value="Save" class="btn btn-lightblue"/>
+      </div>
+    </form>
+  </div>
+</div>

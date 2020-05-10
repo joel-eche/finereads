@@ -18,6 +18,7 @@
   --txt-orange: #ED8936;
   --txt-gray: #4A5568;
   --txt-black: #111111;
+  --select-lightblue-light: #EDF2F7;
 }
 
 body {
@@ -68,12 +69,18 @@ body {
 .text-left {
   text-align: left;
 }
+.text-right {
+  text-align: right;
+}
 .text-undecorated {
   text-decoration: none;
   color: var(--txt-black);
 }
 .text-orange {
   color: var(--txt-orange);
+}
+.text-gray {
+  color: var(--txt-gray);
 }
 
 .list-style-none {
@@ -94,7 +101,7 @@ body {
 }
 .btn-lightblue {
   color: var(--txt-black);
-  background-color: var(--btn-green);
+  background-color: var(--btn-lightblue);
 }
 .btn-transparent-blue {
   color: var(--btn-blue);
@@ -109,6 +116,9 @@ body {
   background-color: transparent;
 }
 
+.mt-12 {
+  margin-top: 12px;
+}
 .mb-12 {
   margin-bottom: 12px;
 }
