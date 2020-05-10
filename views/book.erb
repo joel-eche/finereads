@@ -1,17 +1,30 @@
-<%= erb "../partials/_book-result-search".to_sym, locals: {book: book} %>
+<div class="container book-detail">
+	<div class = "book-detail__cover__container mb-12">
+		<%= erb "../partials/_book-result-search".to_sym, locals: {book: book} %>
+	</div>
 
-<h1>
-	<%= book["volumeInfo"].fetch('title') %>
-	<% subtitle = book["volumeInfo"]['subtitle'] %>
-	<%=': '.concat(subtitle) unless subtitle.nil? %>
-</h1>
+	<div class= "book-detail__detail">
+		<h1 class="font-weigth-bold book-detail__detail--title">
+			<%= book["volumeInfo"].fetch('title') %>
+			<% subtitle = book["volumeInfo"]['subtitle'] %>
+			<%=': '.concat(subtitle) unless subtitle.nil? %>
+		</h1>
 
-<% unless book["volumeInfo"]['authors'].nil? %>
-	<p>by <%= book["volumeInfo"].fetch('authors').join(",") %></p>
-<% end %>
+		<% unless book["volumeInfo"]['authors'].nil? %>
+			<p class="text-gray font-weigth-600">by <%= book["volumeInfo"].fetch('authors').join(", ") %></p>
+		<% end %>
+		
+		<div class="book-detail__description mt-12">
+			<%= book["volumeInfo"]["description"] %>
+		</div>
 
-<%= book["volumeInfo"]["description"] %>
-
-<%if book["saleInfo"].fetch('saleability')=='FOR_SALE'%>
-  <a href="<%= book["saleInfo"]["buyLink"] %>" target="_blank">Buy for <%= book["saleInfo"].fetch('listPrice').values.join(' ') %></a>
-<%end%>
+		<%if book["saleInfo"].fetch('saleability')=='FOR_SALE'%>
+			<div class="text-right">
+				<a class="btn btn-lightblue btn-buy text-undecorated font-weigth-bold " href="<%= book["saleInfo"]["buyLink"] %>" target="_blank">
+					Buy for <%= book["saleInfo"].fetch('listPrice').values.join(' ') %>
+					<i class="fas fa-shopping-cart"></i>
+				</a>
+			</div>
+		<%end%>
+	</div>
+</div>

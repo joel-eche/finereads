@@ -3,12 +3,12 @@
     <img src="<%= book.cover%>" alt="" class="book-edit__cover__container--img"/>
   </div>
   <div class="book-edit__detail flex flex-column">
-    <h1 class="book-edit__detail--title">
+    <h1 class="book-edit__detail--title font-weigth-bold">
       <%= book.title %>
     </h1>
     
     <% unless book.author == ""%>
-    <p>by <%= book.author%></p>
+    <p class="text-gray font-weigth-600">by <%= book.author%></p>
     <% end %>
     
     <form action="/books/<%= book.id%>/edit" method="POST">
@@ -29,7 +29,7 @@
         <textarea name="note" id="note" cols="30" rows="10" class="book-edit__note"><%= book.note%></textarea>
       </div>
       <div class="text-right mb-12">
-        <input type="submit" value="Save" class="btn btn-lightblue"/>
+        <input type="submit" value="Save" class="btn btn-lightblue font-weigth-bold"/>
       </div>
     </form>
   </div>

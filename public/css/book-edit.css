@@ -8,9 +8,6 @@
   padding-left: 22px;
   width: 50%;
 }
-.book-edit__detail--title {
-  font-size: 15px;
-} 
 .book-edit__status-select {
   max-width: 120px;
   height: 40px;
@@ -33,5 +30,8 @@
   .book-edit__detail {
     padding-left: 0px;
     width: 100%;
+  }
+  .book-edit__detail--title {
+    font-size: 15px;
   }
 }

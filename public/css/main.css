@@ -7,18 +7,18 @@
 }
 
 :root {
-  --background: #FFFAF0;
-  --background-gray: #D8D8D8;
-  --btn-orange: #F6AD55;
-  --btn-green: #38A169;
-  --btn-lightblue: #9AE6B4;
-  --btn-red: #C53030;
-  --btn-blue: #2B6CB0;
-  --txt-white: #FFFFFF;
-  --txt-orange: #ED8936;
-  --txt-gray: #4A5568;
+  --background: #fffaf0;
+  --background-gray: #d8d8d8;
+  --btn-orange: #f6ad55;
+  --btn-green: #38a169;
+  --btn-lightblue: #9ae6b4;
+  --btn-red: #c53030;
+  --btn-blue: #2b6cb0;
+  --txt-white: #ffffff;
+  --txt-orange: #ed8936;
+  --txt-gray: #4a5568;
   --txt-black: #111111;
-  --select-lightblue-light: #EDF2F7;
+  --select-lightblue-light: #edf2f7;
 }
 
 body {
@@ -26,8 +26,12 @@ body {
   width: 100%;
   height: 100%;
   background-color: var(--background);
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
+}
 
+select,
+input {
+  font-family: Nunito;
 }
 
 .main {
@@ -88,6 +92,7 @@ body {
 }
 
 .btn {
+  font-family: Nunito;
   height: 28px;
   padding-left: 10px;
   padding-right: 10px;
@@ -134,4 +139,12 @@ body {
 
 .vertical-align-top {
   vertical-align: top;
+}
+
+.font-weigth-600 {
+  font-weight: 600;
+}
+
+.font-weigth-bold {
+  font-weight: bold;
 }
