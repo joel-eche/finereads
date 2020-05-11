@@ -1,21 +1,46 @@
-<form action="/search" method="get" class="search__form">
-  <select class="search__filter" name="search-filter" id="search-filter">
-    <option value="" selected>All</option>
-    <option value="intitle:">Title</option>
-    <option value="inauthor:">Author</option>
-    <option value="inpublisher:">Publisher</option>
-    <option value="subject:">Subject</option>
-    <option value="isbn:">ISBN</option>
+<div class="flex justify-content-center">
+  <form action="/search" method="get" class="search__form" id="search-form">
+    <select class="search__filter" name="search-filter" id="search-filter">
+      <option value="" selected>All</option>
+      <option value="intitle:">Title</option>
+      <option value="inauthor:">Author</option>
+      <option value="inpublisher:">Publisher</option>
+      <option value="subject:">Subject</option>
+      <option value="isbn:">ISBN</option>
+    </select>
+    <input
+      type="text"
+      name="query"
+      id="query"
+      class="search__form__query"
+      placeholder="Search a book..."
+      required
+    />
+    <input type="hidden" name="order-by" id="order-by" value="<%= param_order_by %>">
+    <button type="submit" class="search__form__btn">
+      <i class="fas fa-search search__form__btn--icon"></i>
+    </button>
+  </form>
+</div>
+<div class="text-right">
+  <select class="js-autosubmit-form btn btn-transparent <% if param_query == "" %>display-none<% end %>" name="sort">
+    <option value="relevance" <% if param_order_by == "relevance" %>selected<% end %>>relevance</option>
+    <option value="newest" <% if param_order_by == "newest" %>selected<% end %>>newest</option>
   </select>
-  <input
-    type="text"
-    name="query"
-    id="query"
-    class="search__form__query"
-    placeholder="Search a book..."
-    required
-  />
-  <button type="submit" class="search__form__btn">
-    <i class="fas fa-search search__form__btn--icon"></i>
-  </button>
-</form>
+</div>
+  
+<script>
+  document.querySelectorAll(".js-autosubmit-form").forEach(node => {
+    node.addEventListener("change", () => {
+      input_order_by = document.getElementById("order-by")
+      query = document.getElementById("query")
+      search_filter = document.getElementById("search-filter")
+      input_order_by.value = node.value
+      query.value = "<%= param_query %>"
+      search_filter.value = "<%= param_search_filter %>"
+
+      search_form = document.getElementById("search-form")
+      search_form.submit()
+    });
+  });
+</script>

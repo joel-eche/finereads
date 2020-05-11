@@ -1,8 +1,8 @@
 <section class="search__title flex justify-content-center text-center">
   <h1>Find your next book to read</h1>
 </section>
-<section class="flex justify-content-center">
-  <%= erb "../partials/_form-search".to_sym %>
+<section class="flex flex-column container-big">
+  <%= erb "../partials/_form-search".to_sym, locals: {param_query: param_query, param_search_filter: param_search_filter, has_more_button: has_more_button, param_order_by: param_order_by} %>
 </section>
 <section class="search__results container-big flex flex-wrap justify-content-between">
   <% if message == "" && !books.empty? %>
@@ -21,6 +21,6 @@
 </section>
 <% if has_more_button %>
   <div class="pagination flex justify-content-center">
-    <a href="/search?search-filter=<%= param_search_filter %>&query=<%= param_query %>&maxResults=40" class="btn btn-orange text-undecorated">More</a>
+    <a href="/search?search-filter=<%= param_search_filter %>&query=<%= param_query %>&maxResults=40&order-by=<%= param_order_by %>" class="btn btn-orange text-undecorated">More</a>
   </div>
 <% end %>
