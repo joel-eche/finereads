@@ -46,6 +46,9 @@
   height: 230px;
 }
 
+.pagination {
+}
+
 @media only screen and (max-width: 769px) {
   .search__title {
     font-size: 15px;

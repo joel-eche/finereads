@@ -17,19 +17,35 @@ end
 get '/search' do
   books = []
   message = ''
+  param_query = ''
+  param_search_filter = ''
+  total_items = 0
+  max_results = params['maxResults']
+  has_more_button = false
 
   unless params.empty?
+    param_query = params['query']
+    param_search_filter = params['search-filter']
+
     query = "#{params['search-filter']}#{params['query'].gsub(' ', '+')}"
     data = get_api("volumes?q=#{query}&maxResults=8")
+    
+    total_items = data['totalItems']
 
     if data['items'].nil?
       message = 'No results found'
     else
       books = data['items']
+      
+      if max_results == "40"
+        books.push(*get_api("volumes?q=#{query}&maxResults=#{max_results}&startIndex=9")['items'])
+      end
+
+      has_more_button = total_items > 8 && books.length == 8
     end
   end
 
-  erb :search, locals: { books: books, message: message }
+  erb :search, locals: { books: books, message: message, param_query: param_query, param_search_filter: param_search_filter, has_more_button: has_more_button }
 end
 
 get '/books' do
