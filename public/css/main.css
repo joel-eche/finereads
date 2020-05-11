@@ -105,6 +105,10 @@ input {
   color: var(--txt-white);
   background-color: var(--btn-green);
 }
+.btn-orange {
+  color: var(--txt-white);
+  background-color: var(--btn-orange);
+}
 .btn-lightblue {
   color: var(--txt-black);
   background-color: var(--btn-lightblue);

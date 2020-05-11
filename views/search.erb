@@ -19,3 +19,8 @@
     </div>
   <% end %>
 </section>
+<% if has_more_button %>
+  <div class="pagination flex justify-content-center">
+    <a href="/search?search-filter=<%= param_search_filter %>&query=<%= param_query %>&maxResults=40" class="btn btn-orange text-undecorated">More</a>
+  </div>
+<% end %>
