@@ -19,6 +19,7 @@ get '/search' do
   message = ''
   param_query = ''
   param_search_filter = ''
+  param_order_by = 'relevance'
   total_items = 0
   max_results = params['maxResults']
   has_more_button = false
@@ -26,9 +27,10 @@ get '/search' do
   unless params.empty?
     param_query = params['query']
     param_search_filter = params['search-filter']
+    param_order_by = params['order-by']
 
     query = "#{params['search-filter']}#{params['query'].gsub(' ', '+')}"
-    data = get_api("volumes?q=#{query}&maxResults=8")
+    data = get_api("volumes?q=#{query}&maxResults=8&orderBy=#{params["order-by"]}")
     
     total_items = data['totalItems']
 
@@ -38,14 +40,14 @@ get '/search' do
       books = data['items']
       
       if max_results == "40"
-        books.push(*get_api("volumes?q=#{query}&maxResults=#{max_results}&startIndex=9")['items'])
+        books.push(*get_api("volumes?q=#{query}&maxResults=#{max_results}&startIndex=9&orderBy=#{params["order-by"]}")['items'])
       end
 
       has_more_button = total_items > 8 && books.length == 8
     end
   end
 
-  erb :search, locals: { books: books, message: message, param_query: param_query, param_search_filter: param_search_filter, has_more_button: has_more_button }
+  erb :search, locals: { books: books, message: message, param_query: param_query, param_search_filter: param_search_filter, param_order_by: param_order_by, has_more_button: has_more_button }
 end
 
 get '/books' do

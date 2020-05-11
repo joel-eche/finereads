@@ -113,6 +113,10 @@ input {
   color: var(--txt-black);
   background-color: var(--btn-lightblue);
 }
+.btn-transparent {
+  color: var(--txt-black);
+  background-color: transparent;
+}
 .btn-transparent-blue {
   color: var(--btn-blue);
   background-color: transparent;
@@ -152,4 +156,8 @@ input {
 
 .font-weigth-bold {
   font-weight: bold;
+}
+
+.display-none {
+  display: none;
 }
